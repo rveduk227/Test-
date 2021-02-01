@@ -1,0 +1,35 @@
+package LoginPage.LoginPage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class LoginPage {
+  @Test
+  public void Lpg() {
+	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\Rajeswari V\\Desktop\\Selenium\\Rahulshetty\\chromedriver.exe");
+	  WebDriver driver=new ChromeDriver();
+      driver.manage().window().maximize();
+      driver.get("https://www.linkedin.com/login");
+      
+      WebElement username=driver.findElement(By.id("username"));
+      WebElement password=driver.findElement(By.id("password"));
+      WebElement login=driver.findElement(By.xpath("//button[text()='Sign in']"));
+      
+      username.sendKeys("7975759156");
+      password.sendKeys("Rajive@27");
+      login.click();
+     
+      
+      String actualUrl="https://www.linkedin.com/feed/";
+      String expectedUrl= driver.getCurrentUrl();
+      
+      
+      Assert.assertEquals(expectedUrl,actualUrl);
+  
+  }
+  
+}
